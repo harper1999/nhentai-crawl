@@ -27,7 +27,7 @@ headers = {
     # 'accept-encoding': 'gzip, deflate, br',
     'accept-language': 'zh-CN,zh;q=0.9',
     'cache-control': 'max - age = 0',
-    'cookie': 'cf_chl_2=0cde0cbbd641a8a; cf_chl_prog=x12; cf_clearance=rPy6.wYZ_ip3k4_6AowRR8y1qh0xIj6pL4WvCdtdyvc-1652662436-0-150; csrftoken=oeOzCxiLlFsK8SDvWTmn9zQQFb0YDUxbIgjhiDcdgemyL8KtDnsBJNzbCujeeief; sessionid=bfhsp20dgngz21977jtjq9rctvrd5nru',
+    'cookie': ''  
     'referer': 'https://nhentai.net/favorites/',
     'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="101", "Google Chrome";v="101"',
     'sec-ch-ua - mobile': '?0',
