@@ -40,7 +40,6 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36'}
 
 
-# yescaptcha.verify_recaptcha()
 async def main():
     async with aiohttp.ClientSession(headers=headers) as session:
         async with session.get(favourites) as f_res:  # 获取收藏夹
