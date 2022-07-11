@@ -16,8 +16,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s|%(levelname)s|%(mess
 favourite_path = r'D:\Python\web crawler\requests\favourites'
 if not os.path.exists(favourite_path):
     os.mkdir(favourite_path)
-login_url = 'https://nhentai.net/login/'
-favourites = 'https://nhentai.net/favorites/'
+login_url = ''
+favourites = ''
 headers = {
     # ':authority': 'nhentai.net',
     # ':method': 'GET',
