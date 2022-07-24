@@ -57,7 +57,7 @@ async def main():
 
 async def fetch_albums(session, page):
     async with session.get(page) as p_res:
-        if p_res.status == 200:
+        assert p_res.status == 200:
             subdomains = etree.HTML(await p_res.text()).xpath('//div[@class="gallery"]/a/@href')  # 相册页子域名
             album_urls = ['https://nhentai.net/' + i for i in subdomains]  # 所有的完整漫画链接
             while album_urls:
@@ -72,7 +72,7 @@ async def fetch_albums(session, page):
 
 async def fetch_album(session, url):
     async with session.get(url) as album_res:  # 获取漫画页
-        if album_res.status == 200:
+        assert album_res.status == 200:
             def create_folders():  # 以漫画名创建文件夹
                 if not os.path.exists(album_path):
                     # Windows10文件路径限制最多260字符  要把注册表中的LongPathsEnabled的值改为1
