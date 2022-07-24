@@ -17,7 +17,7 @@ favourite_path = r'D:\Python\web crawler\requests\favourites'
 if not os.path.exists(favourite_path):
     os.mkdir(favourite_path)
 login_url = ''
-favourites = ''
+favourites = ''    # 收藏夹路径
 headers = {
     # ':authority': 'nhentai.net',
     # ':method': 'GET',
@@ -107,9 +107,6 @@ if __name__ == '__main__':
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     try:
         # 运行协程需要进入异步模式(即进入event_loop)，开始控制整个程序的状态，然后把协程对象转为任务task
-        cc = asyncio.run(main())
-        # print(cc)
-        # loop = asyncio.get_event_loop()  # 生成事件循环对象
-        # loop.run_until_complete(startup(remote))  # 检测异步对象任务的状态
+        asyncio.run(main())
     except KeyboardInterrupt as exc:
         logging.info('Quit.')
