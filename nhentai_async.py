@@ -57,7 +57,8 @@ async def main():
 
 async def fetch_albums(session, page):
     async with session.get(page) as p_res:
-        assert p_res.status == 200:
+        try:
+            assert p_res.status == 200
             subdomains = etree.HTML(await p_res.text()).xpath('//div[@class="gallery"]/a/@href')  # 相册页子域名
             album_urls = ['https://nhentai.net/' + i for i in subdomains]  # 所有的完整漫画链接
             while album_urls:
@@ -65,14 +66,15 @@ async def fetch_albums(session, page):
                 album_urls = album_urls[2:]
                 fetch_album_tasks = [asyncio.create_task(fetch_album(session, url)) for url in separated_urls]
                 await asyncio.wait(fetch_album_tasks)
-        else:
-            # print(p_res)
+        except Exception as e:
             logging.info(f'响应状态码: {page, etree.HTML(await p_res.text()).xpath("//title/text()")[0]}')
+            logging.info(e)
 
 
 async def fetch_album(session, url):
     async with session.get(url) as album_res:  # 获取漫画页
-        assert album_res.status == 200:
+        try:
+            assert p_res.status == 200
             def create_folders():  # 以漫画名创建文件夹
                 if not os.path.exists(album_path):
                     # Windows10文件路径限制最多260字符  要把注册表中的LongPathsEnabled的值改为1
@@ -99,8 +101,10 @@ async def fetch_album(session, url):
             imgs = etree.HTML(await album_res.text()).xpath('//img[@class="lazyload"]/@data-src')  # 图片地址集合
             download_imgs_tasks = [asyncio.create_task(download_imgs(session, img)) for img in imgs]
             await asyncio.wait(download_imgs_tasks)
-        else:
+        except Exception as e:
             logging.info(f'响应状态码: {url, etree.HTML(await album_res.text()).xpath("//title/text()")[0]}')
+            logging.info(e)
+
 
 
 if __name__ == '__main__':
